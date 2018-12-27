@@ -110,3 +110,4 @@ gen/
 *.releaseBackup
 .checkstyle
 *.coffee
+frontend/src/node/
