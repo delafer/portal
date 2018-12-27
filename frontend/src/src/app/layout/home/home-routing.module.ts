@@ -7,6 +7,7 @@ import {AboutComponent} from '@features/about/about.component';
 
 const routes: Routes = [
   { path: '', component: WorkspaceComponent, children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'settings',      component: SettingsComponent },
   { path: 'about',      component: AboutComponent }
