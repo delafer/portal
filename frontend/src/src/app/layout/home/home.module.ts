@@ -15,8 +15,8 @@ import {AboutComponent} from '@features/about/about.component';
     NavbarComponent,
     DashboardComponent,
     TileComponent,
-    SettingsComponent,
-    AboutComponent
+    AboutComponent,
+    SettingsComponent
   ],
   imports: [
     CommonModule,

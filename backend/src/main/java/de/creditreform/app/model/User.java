@@ -5,9 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by fan.jin on 2016-10-15.
- */
 
 @Entity
 @Table(name = "USER")
@@ -29,6 +26,9 @@ public class User implements  Serializable {
 
   @Column(name = "lastname")
   private String lastname;
+
+  @Column(name = "token")
+  private String token;
 
 
 
@@ -73,5 +73,12 @@ public class User implements  Serializable {
     this.lastname = lastname;
   }
 
+  public String getToken() {
+    return token;
+  }
+
+  public void setToken(String token) {
+    this.token = token;
+  }
 
 }

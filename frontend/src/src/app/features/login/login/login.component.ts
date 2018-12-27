@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit(event: Event) {
+    console.log("Entering home area!");
     event.preventDefault();
+
   }
 }
