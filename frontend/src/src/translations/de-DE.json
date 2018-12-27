@@ -1,0 +1,16 @@
+{
+  "APP_NAME": "Portal",
+  "About": "About",
+  "Hello world !": "Hallo Welt !",
+  "Home": "Home",
+  "Logged in as": "Eingelogt als",
+  "Login": "Anmeldung",
+  "Logout": "Ausloggen",
+  "Password": "Passwort",
+  "Password is required": "Passwort ist erforderlich",
+  "Username": "Username",
+  "Username is required": "Benutzername ist erforderlich",
+  "Username or password incorrect.": "Benutzername oder Passwort sind falsch.",
+  "Remember me": "Spreichern",
+  "Version": "Version"
+}
