@@ -47,7 +47,7 @@ public class ApiResource implements InitializingBean {
             return Response.ok(r.get()).build();
         }
 
-        return Response.status(Response.Status.UNAUTHORIZED).build();
+        return Response.status(Response.Status.UNAUTHORIZED.getStatusCode(),"Wrong username or password").build();
     }
 
     @Override
