@@ -4,6 +4,8 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './layout/root/app.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {ErrorInterceptor, JwtInterceptor} from '@app/core/interceptors';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,14 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

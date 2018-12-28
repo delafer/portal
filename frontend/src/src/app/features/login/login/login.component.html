@@ -14,12 +14,12 @@
           <hr>
           <hr class="short">
         </div>
-        <form (ngSubmit)="onSubmit($event)">
-          <div class="col-3">
-            <input class="effect-2" type="text" placeholder="Login...">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
+          <div class="form-group col-3">
+            <input class="effect-2" type="text" placeholder="Login..." formControlName="username" [ngClass]="{ 'is-invalid': false }">
             <span class="focus-border"></span>
 
-            <input class="effect-2" type="password" placeholder="Password...">
+            <input class="effect-2" type="password" placeholder="Password..." formControlName="password"  [ngClass]="{ 'is-invalid': false }">
             <span class="focus-border"></span>
           </div>
 
@@ -29,8 +29,8 @@
 
         </form>
       </div>
-      <a [routerLink]="['/home']">
-        <div class="enterButton">
+      <a (click)="documentEditForm.ngSubmit.emit()" >
+        <div class="form-group enterButton">
           <i class="fa fa-lock fa-2x text-white"></i><br>
           <span class="enterText text-white">Enter</span>
         </div>

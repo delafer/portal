@@ -28,10 +28,12 @@ export class AuthenticationService {
         }
       });
       /*this.http.post<any>(`${environment.serverUrl}/api/users/authenticate`, { username, password })*/
-      return this.http.post<any>(`${environment.serverUrl}/api/users/authenticate`, { params: params })
+      return this.http.post<any>(`${environment.serverUrl}/api/users/authenticate`,  params )
             .pipe(map(user => {
+                console.log('Login successful');
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
+                    console.log('JWT Token present');
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);

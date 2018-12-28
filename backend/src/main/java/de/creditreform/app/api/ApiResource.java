@@ -5,11 +5,9 @@ import de.creditreform.app.model.User;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -21,6 +19,7 @@ import java.util.Optional;
 @Path("")
 @Service
 @Produces("application/json")
+@CrossOrigin
 public class ApiResource implements InitializingBean {
 
     @Autowired
@@ -41,7 +40,7 @@ public class ApiResource implements InitializingBean {
 
     @POST
     @Path("/users/authenticate")
-    public Response login(String user, String pwd) {
+    public Response login(@FormParam("username") String user, @FormParam("password") String pwd) {
         Optional<User> r = repo.findOneByUsername(user);
         if (r.isPresent() && Objects.equals(r.get().getPassword(), pwd)) {
             r.get().setToken("fake-jwt-token");

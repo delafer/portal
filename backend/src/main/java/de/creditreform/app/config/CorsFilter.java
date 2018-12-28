@@ -3,8 +3,12 @@ package de.creditreform.app.config;
 import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import org.springframework.stereotype.*;
 
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.*;
+@Component
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements javax.servlet.Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
