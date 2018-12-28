@@ -41,6 +41,10 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
+  forget($event): void {
+    $event.preventDefault();
+  }
+
   onSubmit() {
     this.submitted = true;
     console.log("Entering home area!");

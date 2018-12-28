@@ -24,7 +24,7 @@
           </div>
 
           <div class="forget">
-            <button class="btn btn-secondary btn-sm">FORGOT PASSWORD?</button>
+            <button class="btn btn-secondary btn-sm" (click) = "forget($event)">FORGOT PASSWORD?</button>
           </div>
 
 
@@ -37,7 +37,7 @@
           </div>
         </form>
       </div>
-      <a (click)="documentEditForm.ngSubmit.emit()" >
+      <a (click)="documentEditForm.ngSubmit.emit()" class="btnSubmit">
         <div class="form-group enterButton">
           <i class="fa fa-lock fa-2x text-white"></i><br>
           <span class="enterText text-white">Enter</span>
