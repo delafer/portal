@@ -142,3 +142,20 @@ input::placeholder{
   margin-left: 50px;
   font-weight: 700;
 }
+
+
+.alert-danger {
+  filter: alpha(opacity=60);
+  /* IE */
+  -moz-opacity: 0.6;
+  /* Mozilla */
+  opacity: 0.6;
+}
+
+.alert {
+  border: 2px;
+  padding: 0.35rem 1.25rem;
+  width: 50%;
+  margin-top: 5px;
+}
+

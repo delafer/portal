@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    event.preventDefault();
     console.log("Entering home area!");
 
     // stop here if form is invalid

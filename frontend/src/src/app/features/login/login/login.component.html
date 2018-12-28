@@ -16,10 +16,10 @@
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
           <div class="form-group col-3">
-            <input class="effect-2" type="text" placeholder="Login..." formControlName="username" [ngClass]="{ 'is-invalid': false }">
+            <input class="effect-2" type="text" placeholder="Login..." formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
             <span class="focus-border"></span>
+            <input class="effect-2" type="password" placeholder="Password..." formControlName="password" tile="sb" data-toggle="tooltip" data-placement="top" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
 
-            <input class="effect-2" type="password" placeholder="Password..." formControlName="password"  [ngClass]="{ 'is-invalid': false }">
             <span class="focus-border"></span>
           </div>
 
@@ -27,6 +27,14 @@
             <button class="btn btn-secondary btn-sm">FORGOT PASSWORD?</button>
           </div>
 
+
+          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          <div *ngIf="submitted && f.password.errors" class="alert alert-danger">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+          <div *ngIf="submitted && f.username.errors" class="alert alert-danger">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
         </form>
       </div>
       <a (click)="documentEditForm.ngSubmit.emit()" >

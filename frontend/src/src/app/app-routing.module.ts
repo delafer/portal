@@ -5,10 +5,10 @@ import {SettingsComponent} from '@features/settings/settings.component';
 import {AuthGuard} from './core/guards';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', loadChildren: './features/login/login.module#LoginModule' },
   { path: 'home', loadChildren: './layout/home/home.module#HomeModule', canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/login', pathMatch: 'full' }
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
