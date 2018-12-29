@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {WorkspaceComponent} from './workspace/workspace.component';
-import {DashboardComponent} from '@features/dashboard/dashboard.component';
-import {SettingsComponent} from '@features/settings/settings.component';
-import {AboutComponent} from '@features/about/about.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {SettingsComponent} from './settings/settings.component';
+import {AboutComponent} from './about/about.component';
 
 const routes: Routes = [
   { path: '', component: WorkspaceComponent, children: [
