@@ -9,6 +9,9 @@ import { TileComponent } from '@features/tile/tile.component';
 import { SettingsComponent } from '@features/settings/settings.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {AboutComponent} from '@features/about/about.component';
+import {UnsanitizeComponent} from '../../shared/components/unsanitize.component';
+import {LoadScriptDirective} from '../../shared/directives';
+import {SafePipe} from '../../shared/pipes';
 
 @NgModule({
   declarations: [WorkspaceComponent,
@@ -16,12 +19,16 @@ import {AboutComponent} from '@features/about/about.component';
     DashboardComponent,
     TileComponent,
     AboutComponent,
-    SettingsComponent
+    SettingsComponent,
+    UnsanitizeComponent,
+    LoadScriptDirective,
+    SafePipe
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     ReactiveFormsModule
+
   ]
 })
 export class HomeModule { }
