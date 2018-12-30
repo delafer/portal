@@ -12,7 +12,7 @@ import { AboutComponent} from './about/about.component';
 import { UnsanitizeComponent } from '@shared/components/unsanitize.component';
 import { LoadScriptDirective } from '@shared/directives';
 import { SafePipe } from '@shared/pipes';
-
+import {NgbPaginationModule, NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [WorkspaceComponent,
     NavbarComponent,
@@ -27,8 +27,9 @@ import { SafePipe } from '@shared/pipes';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    NgbPaginationModule,
+    NgbRatingModule
   ]
 })
 export class HomeModule { }

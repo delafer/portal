@@ -1,7 +1,9 @@
 package de.creditreform.app.api;
 
+import de.creditreform.app.model.Game;
 import de.creditreform.app.repository.AuthorityRepository;
 import de.creditreform.app.model.User;
+import de.creditreform.app.repository.GameRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,10 @@ public class ApiResource implements InitializingBean {
 
     @Autowired
     AuthorityRepository repo;
+
+
+    @Autowired
+    GameRepository games;
 
     @GET
     @Path("/test")
@@ -49,6 +55,14 @@ public class ApiResource implements InitializingBean {
 
         return Response.status(Response.Status.UNAUTHORIZED.getStatusCode(),"Wrong username or password").build();
     }
+
+    @GET
+    @Path("/games")
+    public Response games() {
+        List<Game> ret = games.findAll();
+        return Response.ok(ret).build();
+    }
+
 
     @Override
     public void afterPropertiesSet() throws Exception {

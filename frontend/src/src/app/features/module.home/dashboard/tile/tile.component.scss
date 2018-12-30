@@ -1,8 +1,18 @@
 .profile-content{box-shadow:1px 1px 10px rgba(0,0,0,0.3);}
 /* Profile Content */
 .profile-content {
-  padding: 20px;
+  padding: 12px;
   background: #fff;
-  min-height: 200px;
-  margin-bottom:30px;
+  min-height: 250px;
+  margin-bottom:24px;
+}
+
+.gamecat {
+  background: #efefef;
+  padding: 2px;
+  box-shadow:1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.card-text {
+  font-size: 0.8rem;
 }
