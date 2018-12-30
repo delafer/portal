@@ -63,6 +63,18 @@ public class ApiResource implements InitializingBean {
         return Response.ok(ret).build();
     }
 
+    @GET
+    @Path("/games/{id}")
+    public Response getGame(@PathParam("id") long id) {
+        Optional<Game> ret = games.findById(id);
+        if (ret.isPresent()) {
+            return Response.ok(ret.get()).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+    }
+
 
     @Override
     public void afterPropertiesSet() throws Exception {

@@ -1,3 +1,13 @@
-<p>
-  execute works!
-</p>
+<div *ngIf="game">
+  <h2>{{game.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{game.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="game.name" placeholder="name"/>
+    </label>
+  </div>
+  <div iframe [src]="iframe"></div>
+
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>

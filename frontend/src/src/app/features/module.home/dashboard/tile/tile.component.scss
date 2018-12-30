@@ -102,3 +102,43 @@
 
 
 /* ribbon corner : end */
+
+a {
+  color: black;
+  text-decoration: none !important;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+a:hover
+{
+  color: black;
+  text-decoration:none !important;
+  cursor:pointer;
+}
+
+.my-link:hover {
+  font-weight: bold;
+  transform: rotate(-10deg);
+}
+
+
+//.rotate-link:hover {
+//  display: inline-block;
+//  font-weight: bold;
+//  animation: roll 3s infinite;
+//  transform: rotate(30deg);
+//  opacity: .7;
+//}
+//
+//
+//@keyframes roll {
+//  0% {
+//    transform: rotate(0);
+//  }
+//  100% {
+//    transform: rotate(360deg);
+//  }
+//}

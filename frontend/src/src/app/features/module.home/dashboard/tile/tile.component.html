@@ -1,16 +1,18 @@
-<div class="profile-content mx-1 box" style="width: 15rem;" appHover>
+<div appHover class="profile-content mx-1 box" style="width: 15rem;">
   <div *ngIf="isNew(titel.create_date)" class="ribbon ribbon-top-left"><span>NEW</span></div>
   <div class="card-body p-2">
-    <div class="d-flex justify-content-end">
-      <ngb-rating [(rate)]="titel.rating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
-    </div>
-    <img [src]="titel.thumb" onError="this.src='assets/no-image.jpg'" class="card-img-top" alt="...">
-    <h5 class="card-title">{{titel.name }}</h5>
-    <h6 class="card-subtitle mb-1 text-muted gamecat">{{titel.category}}</h6>
-    <p class="card-text">{{titel.description | strip:320}}</p>
-    <div class="d-flex justify-content-between">
-    <a href="{{titel.youtube}}" class="card-link">Video</a>
-    <a href="{{titel.url}}" class="card-link">URL</a>
+    <a routerLink="../execute/{{titel.id}}" class="alink">
+      <div class="d-flex justify-content-end">
+        <ngb-rating [(rate)]="titel.rating" [readonly]="true" [starTemplate]="t" max="5"></ngb-rating>
+      </div>
+      <img [src]="titel.thumb" alt="..." class="card-img-top" onError="this.src='assets/no-image.jpg'">
+      <h5 class="card-title">{{titel.name }}</h5>
+      <h6 class="card-subtitle mb-1 text-muted gamecat">{{titel.category}}</h6>
+      <p class="card-text">{{titel.description | strip:320}}</p>
+    </a>
+    <div class="d-flex justify-content-between mt-3">
+      <a class="card-link my-link" href="{{titel.youtube}}">Video</a>
+      <a class="card-link my-link" href="{{titel.url}}">URL</a>
     </div>
   </div>
 </div>

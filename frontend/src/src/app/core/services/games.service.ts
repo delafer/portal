@@ -16,7 +16,7 @@ const httpOptions = {
 export class GameService {
   //https://www.htmlgames.com/html5-games-for-your-site/
   //'https://www.htmlgames.com/rss/games.php?json';  // URL to web api
-  private gamesUrl = `${environment.serverUrl}/api/games/`;  // URL to web api
+  private gamesUrl = `${environment.serverUrl}/api/games`;  // URL to web api
 
   constructor(
     private http: HttpClient) { }

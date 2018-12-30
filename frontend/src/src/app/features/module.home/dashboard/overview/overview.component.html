@@ -1,0 +1,21 @@
+
+
+  <form (submit)="search(term.value)" class="col-6 py-3">
+    <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+      <input #term (keyup)="search(term.value)" [value]="terms" autofocus class="form-control" placeholder="Search">
+      <div class="input-group-btn">
+        <button class="btn btn btn-default btn-flat btn-find" type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </form>
+  <div class="row d-flex justify-content-around">
+    <ng-container *ngFor="let tile of items$ | async">
+      <app-tile [titel]="tile"></app-tile>
+    </ng-container>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [maxSize]="7" [pageSize]="8" [rotate]="true"
+                    [boundaryLinks]="true" class="col-6"></ngb-pagination>
+  </div>
+
+

@@ -11,10 +11,6 @@ export class LoadScriptDirective implements OnInit, AfterViewInit, OnDestroy {
 
   private node: any;
 
-   public logStuff(): any {
-    console.log(123);
-  }
-
   ngOnInit() {
     /* this.node = this.renderer.createElement('script');
     this.node.innerHTML = '';

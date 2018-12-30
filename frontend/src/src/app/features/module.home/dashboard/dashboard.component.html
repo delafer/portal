@@ -1,27 +1,5 @@
-
-
 <div class="jumbotron">
   <div class="container">
-
-      <!--<input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" class="col-6"/>-->
-      <form (submit)="search(term.value)" class="col-6 py-3">
-        <div class="input-group input-group-sm" style="margin-bottom: 10px;">
-          <input #term (keyup)="search(term.value)" [value]="terms" class="form-control" placeholder="Search" autofocus>
-          <div class="input-group-btn">
-            <button type="submit" class="btn btn btn-default btn-flat btn-find"><i class="fa fa-search"></i></button>
-          </div>
-        </div>
-      </form>
-    <div class="row d-flex justify-content-around">
-      <a *ngFor="let tile of items$ | async" routerLink="execute/{{tile.id}}">
-        <app-tile [titel]="tile"></app-tile>
-      </a>
-    </div>
-    <div class="row d-flex justify-content-center">
-      <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [maxSize]="7" [pageSize]="8" [rotate]="true" [boundaryLinks]="true" class="col-6"></ngb-pagination>
-    </div>
-
+    <router-outlet></router-outlet>
   </div>
 </div>
-
-
