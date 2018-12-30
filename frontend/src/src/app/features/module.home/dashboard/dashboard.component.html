@@ -1,7 +1,7 @@
 <div class="jumbotron">
 <div class="container">
   <div class="row d-flex justify-content-around">
-    <ngb-pagination [collectionSize]=" total$ | async" [(page)]="page" [maxSize]="8" [rotate]="true" [boundaryLinks]="true" class="col-6"></ngb-pagination>
+    <ngb-pagination [collectionSize]=" total$ | async" [(page)]="page" [maxSize]="8" [rotate]="true" [boundaryLinks]="true" (goTo)="goToPage($event)" class="col-6"></ngb-pagination>
     <div class="col-6">{{(items$ | async)?.length}}</div>
     <ng-container *ngFor="let tile of items$ | async ">
       <app-tile [titel]="tile" ></app-tile>

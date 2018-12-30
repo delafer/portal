@@ -24,11 +24,14 @@ export class GameService {
   list(search: string = null, page: number = 1, limit: number = 8): Observable<ListResult<Game>> {
 
     let elements: Observable<Game[]> = this.getGames();
+    let count = 0;
     return elements.pipe(
+      tap(games => {count = games.length; console.log(`Before: ${games.length}`)}),
       map((games : Game[]) => games.filter(p => ((search) ? p.name.toLowerCase().indexOf(search) !== -1 : true))),
       map ((games: Game[]) => games.slice((page - 1) * limit, page * limit)),
       delay(100),
-      map((games: Game[]) => ({items : games, total: games.length}))
+      tap(games => {console.log(`After: ${games.length}`)}),
+      map((games: Game[]) => ({items : games, total: count}))
     );
 
   }

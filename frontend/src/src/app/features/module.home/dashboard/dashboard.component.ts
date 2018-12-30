@@ -12,34 +12,27 @@ import {debounceTime, distinctUntilChanged, map, merge, pluck, share, startWith,
 })
 export class DashboardComponent implements OnInit {
 
-  // tileList: Game[] = [];
-  // page = 1;
-  //
-  // constructor(private appService: GameService) { }
-  //
-  // ngOnInit() {
-  //   this.getTiles();
-  // }
-  //
-  // getTiles(): void {
-  //   this.appService.getGames()
-  //     .subscribe(games => {
-  //         this.tileList = games.slice(1, 7);
-  //         console.log(games.length);
-  //       }
-  //     );
-  // }
-
   total$: Observable<number>;
   items$: Observable<Game[]>;
 
   terms: string = "";
   private searchTermStream = new Subject<string>();
 
-  page: number = 1;
+  page$: number = 1;
+  set page(value : number) {
+    this.page$ = value;
+    this.goToPage(this.page$);
+  }
+
+  get page() {
+    return this.page$;
+  }
+
   private pageStream = new Subject<number>();
 
   constructor(protected movieService: GameService) { }
+
+
 
   ngOnInit() {
     const searchSource = this.searchTermStream.pipe(
@@ -51,13 +44,13 @@ export class DashboardComponent implements OnInit {
       }));
 
     const pageSource = this.pageStream.pipe(map(pageNumber => {
-      this.page = pageNumber;
+      this.page$ = pageNumber;
       return {search: this.terms, page: pageNumber}
     }));
 
     const source = pageSource.pipe (
       merge(searchSource),
-      startWith({search: this.terms, page: this.page}),
+      startWith({search: this.terms, page: this.page$}),
       switchMap((params: {search: string, page: number}) => {
         return this.movieService.list(params.search, params.page)
       }),
@@ -71,8 +64,9 @@ export class DashboardComponent implements OnInit {
     this.searchTermStream.next(terms)
   }
 
-  goToPage(page: number) {
-    this.pageStream.next(page)
+  goToPage(topage: number) {
+    console.log(`called for page ${topage}`);
+    this.pageStream.next(topage)
   }
 
 }
