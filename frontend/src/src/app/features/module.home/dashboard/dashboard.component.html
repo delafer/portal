@@ -1,13 +1,27 @@
+
+
 <div class="jumbotron">
-<div class="container">
-  <div class="row d-flex justify-content-around">
-    <ngb-pagination [collectionSize]=" total$ | async" [(page)]="page" [maxSize]="8" [rotate]="true" [boundaryLinks]="true" (goTo)="goToPage($event)" class="col-6"></ngb-pagination>
-    <div class="col-6">{{(items$ | async)?.length}}</div>
-    <ng-container *ngFor="let tile of items$ | async ">
-      <app-tile [titel]="tile" ></app-tile>
-    </ng-container>
+  <div class="container">
+
+      <!--<input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" class="col-6"/>-->
+      <form (submit)="search(term.value)" class="col-6 py-3">
+        <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+          <input #term (keyup)="search(term.value)" [value]="terms" class="form-control" placeholder="Search" autofocus>
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn btn-default btn-flat btn-find"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </form>
+    <div class="row d-flex justify-content-around">
+      <ng-container *ngFor="let tile of items$ | async ">
+        <app-tile [titel]="tile" ></app-tile>
+      </ng-container>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <ngb-pagination [collectionSize]=" total$ | async" [(page)]="page" [maxSize]="8" [rotate]="true" [boundaryLinks]="true" class="col-6"></ngb-pagination>
+    </div>
+
   </div>
-</div>
 </div>
 
 

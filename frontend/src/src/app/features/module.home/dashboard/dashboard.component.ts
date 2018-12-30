@@ -12,6 +12,8 @@ import {debounceTime, distinctUntilChanged, map, merge, pluck, share, startWith,
 })
 export class DashboardComponent implements OnInit {
 
+  public model: any;
+
   total$: Observable<number>;
   items$: Observable<Game[]>;
 

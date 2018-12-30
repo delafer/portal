@@ -25,11 +25,12 @@ export class GameService {
 
     let elements: Observable<Game[]> = this.getGames();
     let count = 0;
+    if (search) search = search.replace(/^\s+|\s+$/g,'').toLowerCase();
     return elements.pipe(
-      tap(games => {count = games.length; console.log(`Before: ${games.length}`)}),
-      map((games : Game[]) => games.filter(p => ((search) ? p.name.toLowerCase().indexOf(search) !== -1 : true))),
+      map((games : Game[]) => games.filter(p => ((search) ? p.name.toLowerCase().indexOf(search) > 0 || p.description.toLowerCase().indexOf(search) > 0 : true))),
+      tap(games => {count = games.length; console.log(`Before: ${games.length}, search: ${search}`)}),
       map ((games: Game[]) => games.slice((page - 1) * limit, page * limit)),
-      delay(100),
+      delay(300),
       tap(games => {console.log(`After: ${games.length}`)}),
       map((games: Game[]) => ({items : games, total: count}))
     );
