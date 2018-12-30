@@ -1,4 +1,5 @@
-<div class="profile-content mx-1" style="width: 15rem;" appHover>
+<div class="profile-content mx-1 box" style="width: 15rem;" appHover>
+  <div *ngIf="isNew(titel.create_date)" class="ribbon ribbon-top-left"><span>NEW</span></div>
   <div class="card-body p-2">
     <div class="d-flex justify-content-end">
       <ngb-rating [(rate)]="titel.rating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>

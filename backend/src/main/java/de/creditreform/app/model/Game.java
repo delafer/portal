@@ -9,7 +9,7 @@ public class Game {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    public Long id;
 
     @Column(name = "name",length = 48)
     public String name;

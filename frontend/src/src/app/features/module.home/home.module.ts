@@ -15,6 +15,7 @@ import { SafePipe } from '@shared/pipes';
 import {NgbPaginationModule, NgbRatingModule, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
 import {StripPipe} from '../../shared/pipes';
 import {HoverDirective} from '../../shared/directives/hover.directive';
+import { ExecuteComponent } from './dashboard/execute/execute.component';
 @NgModule({
   declarations: [WorkspaceComponent,
     NavbarComponent,
@@ -26,7 +27,8 @@ import {HoverDirective} from '../../shared/directives/hover.directive';
     LoadScriptDirective,
     SafePipe,
     StripPipe,
-    HoverDirective
+    HoverDirective,
+    ExecuteComponent
 
   ],
   imports: [

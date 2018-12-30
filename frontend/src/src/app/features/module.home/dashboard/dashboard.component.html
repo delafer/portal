@@ -13,12 +13,12 @@
         </div>
       </form>
     <div class="row d-flex justify-content-around">
-      <ng-container *ngFor="let tile of items$ | async ">
-        <app-tile [titel]="tile" ></app-tile>
-      </ng-container>
+      <a *ngFor="let tile of items$ | async" routerLink="execute/{{tile.id}}">
+        <app-tile [titel]="tile"></app-tile>
+      </a>
     </div>
     <div class="row d-flex justify-content-center">
-      <ngb-pagination [collectionSize]=" total$ | async" [(page)]="page" [maxSize]="8" [rotate]="true" [boundaryLinks]="true" class="col-6"></ngb-pagination>
+      <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [maxSize]="7" [pageSize]="8" [rotate]="true" [boundaryLinks]="true" class="col-6"></ngb-pagination>
     </div>
 
   </div>
