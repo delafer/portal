@@ -11,7 +11,7 @@
       <p class="card-text">{{titel.description | strip:320}}</p>
     </a>
     <div class="d-flex justify-content-between mt-3">
-      <a class="card-link my-link" href="{{titel.youtube}}">Video</a>
+      <app-youtube [game]="titel"  class="my-link"></app-youtube>
       <a class="card-link my-link" href="{{titel.url}}">URL</a>
     </div>
   </div>

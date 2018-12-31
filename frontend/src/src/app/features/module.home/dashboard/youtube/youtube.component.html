@@ -1,0 +1,21 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">{{game.name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="d-flex justify-content-center">
+    <div iframe [src]="iframe"></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus  class="btn btn-danger" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #nothing></ng-template>
+<div *ngIf="game.youtube;else nothing;">
+  <a class="card-link" (click)="open(content)">Video</a>
+</div>

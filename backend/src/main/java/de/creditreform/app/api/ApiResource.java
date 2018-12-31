@@ -75,6 +75,23 @@ public class ApiResource implements InitializingBean {
 
     }
 
+    @DELETE
+    @Path("/games/{id}")
+    public Response deleteGame(@PathParam("id") long id) {
+        games.deleteById(id);
+        return Response.status(Response.Status.OK).build();
+
+    }
+
+    @PUT
+    @Path("/games")
+    public Response saveGame(Game game) {
+        games.save(game);
+        return Response.status(Response.Status.CREATED).build();
+
+    }
+
+
 
     @Override
     public void afterPropertiesSet() throws Exception {

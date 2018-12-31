@@ -1,0 +1,28 @@
+
+<div class="jumbotron">
+  <div class="container">
+
+    <h2>Games list</h2>
+
+    <div>
+      <label>Game name:
+        <input #gameName/>
+      </label>
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button (click)="add(gameName.value); gameName.value=''" class="btn btn-primary mx-2">
+        add
+      </button>
+    </div>
+    <ul class="games" >
+    <div class="row d-flex justify-content-around">
+        <li *ngFor="let game of games" class="col-3" placement="right" [ngbTooltip]="tipContent">
+          <ng-template #tipContent><b>{{game.name}}</b><br/><img [src]="game.thumb" alt="..." class="card-img-top" onError="this.src='assets/no-image.jpg'"></ng-template>
+          <a routerLink="{{game.id}}">
+            <span class="badge">{{game.id}}</span> {{game.name | strip:20}}
+          </a>
+          <button (click)="delete(game)" class="delete" title="delete hero">x</button>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

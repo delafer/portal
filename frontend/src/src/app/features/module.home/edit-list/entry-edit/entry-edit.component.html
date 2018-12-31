@@ -1,0 +1,12 @@
+<div *ngIf="game">
+  <h2>{{game.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{game.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="game.name" placeholder="name"/>
+    </label>
+  </div>
+  <button class="btn btn-secondary mr-2" (click)="goBack()">go back</button>
+  <button class="btn btn-danger mx-2" (click)="save()">save</button>
+  <button class="btn btn-success ml-2" (click)="play()">play</button>
+</div>

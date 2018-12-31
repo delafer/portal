@@ -3,7 +3,7 @@ import {AppService} from '@app/core/services/app.service';
 import {GameService} from '../../../../core/services/games.service';
 import {Game} from '../../../../common/models';
 import {Observable, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, merge, pluck, share, startWith, switchMap} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, merge, pluck, share, startWith, switchMap, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -56,7 +56,8 @@ export class OverviewComponent implements OnInit {
       switchMap((params: {search: string, page: number}) => {
         return this.movieService.list(params.search, params.page)
       }),
-      share());
+      share()
+      );
 
     this.total$ = source.pipe(pluck('total'));
     this.items$ = source.pipe(pluck('items'));

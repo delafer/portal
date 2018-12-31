@@ -12,12 +12,15 @@ import { AboutComponent } from './about/about.component';
 import { UnsanitizeComponent } from '@shared/components/unsanitize.component';
 import { LoadScriptDirective } from '@shared/directives';
 import { SafePipe } from '@shared/pipes';
-import { NgbPaginationModule, NgbRatingModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbRatingModule, NgbTooltipModule, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
 import { StripPipe} from '../../shared/pipes';
 import { HoverDirective} from '../../shared/directives/hover.directive';
 import { ExecuteComponent } from './dashboard/execute/execute.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IframeDirective } from '../../shared/directives';
+import { YoutubeComponent } from './dashboard/youtube/youtube.component';
+import { EditListComponent } from './edit-list/edit-list.component';
+import { EntryEditComponent } from './edit-list/entry-edit/entry-edit.component';
 @NgModule({
   declarations: [WorkspaceComponent,
     NavbarComponent,
@@ -32,7 +35,10 @@ import { IframeDirective } from '../../shared/directives';
     StripPipe,
     HoverDirective,
     ExecuteComponent,
-    DashboardComponent
+    DashboardComponent,
+    YoutubeComponent,
+    EditListComponent,
+    EntryEditComponent
 
   ],
   imports: [
@@ -42,7 +48,8 @@ import { IframeDirective } from '../../shared/directives';
     ReactiveFormsModule,
     NgbPaginationModule,
     NgbRatingModule,
-    NgbTypeaheadModule
+    NgbTypeaheadModule,
+    NgbTooltipModule
 
   ]
 })

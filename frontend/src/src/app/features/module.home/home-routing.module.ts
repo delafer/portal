@@ -6,6 +6,8 @@ import {AboutComponent} from './about/about.component';
 import {ExecuteComponent} from './dashboard/execute/execute.component';
 import {OverviewComponent} from './dashboard/overview/overview.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {EditListComponent} from './edit-list/edit-list.component';
+import {EntryEditComponent} from './edit-list/entry-edit/entry-edit.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,8 @@ const routes: Routes = [
           {path: 'execute/:id', component: ExecuteComponent}
         ]
       },
+      {path: 'editor', component: EditListComponent},
+      {path: 'editor/:id', component: EntryEditComponent},
       {path: 'settings', component: SettingsComponent},
       {path: 'about', component: AboutComponent}
     ]

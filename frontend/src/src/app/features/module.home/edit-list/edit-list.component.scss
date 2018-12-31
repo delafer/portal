@@ -1,0 +1,69 @@
+.games {
+  margin: 0 0 2em 0;
+  padding: 0;
+  list-style-type: none;
+  //width: 15em;
+}
+
+.games li {
+  position: relative;
+  cursor: pointer;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+  width: 380px;
+}
+
+.games li:hover {
+  top: .1em;
+}
+
+.games a {
+  color: #888;
+  text-decoration: none;
+  position: relative;
+  background-color: #DDD;;
+  display: block;
+  width: 250px;
+}
+
+.games a:hover {
+  color: #607D8B;
+}
+
+.games .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.58em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  height: 2em;
+  min-width: 16px;
+  text-align: right;
+  margin-right: .4em;
+  border-radius: 4px 0 0 4px;
+}
+
+//button {
+//
+//}
+
+button.delete {
+
+  background-color: #eee;
+  padding: 2px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+
+  position: absolute;
+  left: 220px;
+  top: 1px;
+  z-index: 10;
+  background-color: gray !important;
+  color: white;
+}

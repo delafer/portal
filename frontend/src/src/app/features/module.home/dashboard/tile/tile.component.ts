@@ -9,7 +9,7 @@ export class TileComponent implements OnInit {
 
   constructor() { }
 
-  @Input() titel: string;
+  @Input() titel: any;
   ngOnInit() {
   }
 
