@@ -23,16 +23,19 @@ export class AuthenticationService {
 
       const params = new HttpParams({
         fromObject: {
+          client_id: 'portal',
           username: username,
           password: password,
+          grant_type: 'password',
+          client_secret: environment.authSecret
         }
       });
       /*this.http.post<any>(`${environment.serverUrl}/api/users/authenticate`, { username, password })*/
-      return this.http.post<any>(`${environment.serverUrl}/api/users/authenticate`,  params )
+      return this.http.post<any>(`${environment.serverUrl}/api/users/jwt`,  params )
             .pipe(map(user => {
                 console.log('Login successful');
                 // login successful if there's a jwt token in the response
-                if (user && user.token) {
+                if (user && user.access_token) {
                     console.log('JWT Token present');
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
