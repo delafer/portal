@@ -30,7 +30,11 @@ public class User implements  Serializable {
   @Column(name = "token")
   private String token;
 
+  @Column(name = "email")
+  private String email;
 
+  @Column(name = "roles")
+  private String roles;
 
   public Long getId() {
     return id;
@@ -68,10 +72,7 @@ public class User implements  Serializable {
     return lastname;
   }
 
-  public void setLastname(String lastname) {
-
-    this.lastname = lastname;
-  }
+  public void setLastname(String lastname) { this.lastname = lastname; }
 
   public String getToken() {
     return token;
@@ -80,5 +81,13 @@ public class User implements  Serializable {
   public void setToken(String token) {
     this.token = token;
   }
+
+  public String getEmail() { return email; }
+
+  public void setEmail(String email) { this.email = email; }
+
+  public String getRoles() { return roles; }
+
+  public void setRoles(String roles) { this.roles = roles; }
 
 }
