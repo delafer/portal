@@ -1,18 +1,65 @@
 <div class="jumbotron">
-<form (ngSubmit)="submitForm()" [formGroup]="profileForm">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  <h4>User '<b>{{profileForm.value.login}}</b>' settings/info page.</h4>
+  <hr/>
+  <div class="container">
+    <div class="row d-flex flex-row">
+      <div class="d-flex justify-content-center col-12">
+    <form (ngSubmit)="submitForm()" [formGroup]="profileForm" class="col-9">
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="inputLogin">Login</label>
+          <input class="form-control" id="inputLogin" placeholder="Login" type="login" formControlName="login" readonly>
+        </div>
+        <div class="form-group col-6">
+          <label for="inputEmail">Email</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+            </div>
+            <input class="form-control" id="inputEmail" placeholder="Email" type="email" formControlName="email" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6"></div>
+        <div class="form-group col-6">
+          <div class="form-check">
+            <input class="form-check-input" id="verified" type="checkbox" formControlName="verified" disabled>
+            <label class="form-check-label" for="verified">Verified email</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="firstName">First name</label>
+          <input class="form-control" id="firstName" placeholder="firstName" type="firstName" formControlName="firstName" readonly>
+        </div>
+        <div class="form-group col-6">
+          <label for="secondName">Second name</label>
+          <input class="form-control" id="secondName" placeholder="secondName" type="secondName" formControlName="secondName" readonly>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="issuer">Token Issuer</label>
+          <input class="form-control" id="issuer" placeholder="Issuer" type="issuer" formControlName="issuer" readonly>
+        </div>
+        <div class="form-group col-6">
+          <label for="party">Authorized party</label>
+          <input class="form-control" id="party" placeholder="Authorized party" type="party" formControlName="party" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">User roles</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="roles" [value]="profileForm.value.roles | nl2br" readonly></textarea>
+      </div>
+      <div class="form-group">
+        <label for="jwtToken">JWT Token</label>
+        <textarea class="form-control small" id="jwtToken" rows="12" formControlName="token" readonly></textarea>
+      </div>
+      <button class="btn btn-primary btn3d" type="submit">Submit</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary btn3d">Submit</button>
-</form>
+</div>
+</div>
 </div>

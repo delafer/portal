@@ -26,7 +26,7 @@ public class AuthRespBuilder implements AuthBuilder {
 
     private final static long EXP_TIME_SECONDS = 300L;
     private final static String originUrl = "http://127.0.0.1:4001/api/Portal";
-    public static final String AZP_AUTHORIZED_PARTY = "portal";
+    public static final String AZP_AUTHORIZED_PARTY = "spring portal backend";
     public static final String AUTH_CONTEXT_CLASS = "1";
     public static final String[] REALM_ROLES = {"offline_access", "uma_authorization"};
     public static final String DEFAULT_ROLE = "view-profile";

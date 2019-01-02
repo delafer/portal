@@ -8,8 +8,21 @@ export class Nl2brPipe implements PipeTransform {
   transform(value: any, args?: any): any {
 
     if (value !== void 0) {
-      //return value.replace(/\n/g, '<br>');
-      return value.replace(/,/g, '<br/>');
+
+      if (Array.isArray(value))  {
+        console.log("aaaaaaa!",value);
+        let res = '';
+        for (let next of value) {
+          if (res.length!==0) res += '\r\n';
+          res += next;
+        }
+        return res;
+      } else {
+        return value.replace(/,/g, '\r\n');
+      }
+
+
+
     }
     return value;
   }
