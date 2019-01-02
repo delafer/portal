@@ -1,0 +1,60 @@
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+.bd-callout {
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #7d8285;
+  border-left-width: .25rem;
+  border-radius: .45rem;
+  background-color: #f2f2f2;
+}
+
+.bd-callout-info {
+  border-left-color: #5bc0de;
+}
+
+.bd-callout p:last-child {
+  margin-bottom: 0;
+}
+
+div {
+  display: block;
+}
+
+p {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  margin-top: 0;
+  font-style: italic;
+}
+
+.game {
+  display: block;
+  min-width: 800px;
+  width: 800px;
+  height: 480px;
+}
+
+.btn {
+  min-width: 150px !important;
+}
+
+.star {
+  font-size: 2.0rem;
+  color: #b0c4de;
+}
+.filled {
+  color: #1e90ff;
+}
+.bad {
+  color: #deb0b0;
+}
+.filled.bad {
+  color: #ff1e1e;
+}

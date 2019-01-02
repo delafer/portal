@@ -1,13 +1,35 @@
 <div *ngIf="game">
-  <h2>{{game.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{game.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="game.name" placeholder="name"/>
-    </label>
+  <div class="row d-flex flex-row">
+    <div class="d-flex justify-content-between col-12">
+      <h2>{{game.name}}</h2>
+      <ngb-rating [(rate)]="game.rating" max="5">
+        <ng-template let-fill="fill" let-index="index">
+          <span [class.bad]="index < 2" [class.filled]="fill === 100" class="star">&#9733;</span>
+        </ng-template>
+      </ngb-rating>
+    </div>
   </div>
-  <div iframe [src]="iframe"></div>
-
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <hr class="my-4">
+  <div class="container">
+    <div class="row d-flex flex-row">
+      <div class="d-flex justify-content-center col-12">
+        <div class="game mb-4">
+          <div [src]="iframe" iframe></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bd-callout bd-callout-info shadow p-3 mb-5 bg-white rounded">
+    <p><b>{{game.name}}:</b> {{game.description}}
+      <br/><b>Creation date:</b> {{game.create_date | date:'MMM d, y'}}
+      <br/><b>Genre:</b> {{game.category}}
+      <br/><b>Times played:</b> {{game.played}}
+    </p>
+  </div>
+  <div class="row d-flex flex-row">
+    <div class="d-flex justify-content-center col-12">
+      <button (click)="goBack()" class="btn btn-primary mr-2 btn3d">go back</button>
+      <button (click)="save()" class="btn btn-danger mx-2 btn3d">save</button>
+    </div>
+  </div>
 </div>
