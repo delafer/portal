@@ -17,6 +17,7 @@
         <maven.compiler.source>1.8</maven.compiler.source> 
         <maven.compiler.target>1.8</maven.compiler.target> 
         <failOnMissingWebXml>false</failOnMissingWebXml> 
+        <appsensor.version>2.3.3</appsensor.version>
         <!--suppress UnresolvedMavenProperty -->
         <main.basedir>${project.parent.basedir}</main.basedir>
     </properties> 
@@ -73,10 +74,38 @@
             <artifactId>h2</artifactId> 
         </dependency>
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-        </dependency>
+		  <groupId>org.owasp.appsensor</groupId>
+		  <artifactId>appsensor-core</artifactId>
+		  <version>${appsensor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.owasp.appsensor</groupId>
+			<artifactId>appsensor-configuration-stax</artifactId>
+			<version>${appsensor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.owasp.appsensor</groupId>
+			<artifactId>appsensor-ws-rest-client</artifactId>
+			<version>${appsensor.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-grizzly2-http</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+		    		<artifactId>jersey-test-framework-provider-inmemory</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.glassfish.jersey.ext</groupId>
+		    		<artifactId>jersey-spring3</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
     </dependencies> 
     <build> 
         <plugins> 

@@ -18,7 +18,7 @@ public class JaxRsJerseyConfig extends ResourceConfig {
     private void registerEndpoints() {
 
         register(ApiResource.class);
-        property(ServletProperties.FILTER_FORWARD_ON_404, true);
+       // property(ServletProperties.FILTER_FORWARD_ON_404, true);
 
 
     }

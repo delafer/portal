@@ -35,7 +35,7 @@ public class Application extends SpringBootServletInitializer implements WebAppl
     @EventListener({ApplicationReadyEvent.class})
     void applicationReadyEvent() {
         System.out.println("Application started ... launching browser now");
-        openHomePage("http://localhost:4200/");
+        openHomePage("http://localhost:4300/");
     }
 
 //    @Bean

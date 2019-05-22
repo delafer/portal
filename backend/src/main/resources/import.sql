@@ -4,6 +4,7 @@ INSERT INTO user (id, username, password, firstname, lastname, email, roles) VAL
 INSERT INTO user (id, username, password, firstname, lastname, email, roles) VALUES (2, 'admin', 'start123', 'Nikola', 'Tesla', 'n.tesla@gmx.de', 'view-profile');
 INSERT INTO user (id, username, password, firstname, lastname, email, roles) VALUES (3, 'test', 'test', 'Juri', 'Gagarin', 'gagarin@gmx.de', 'view-profile,manage-account,manage-account-links');
 INSERT INTO user (id, username, password, firstname, lastname, email, roles) VALUES (4, 'angela', 'start123', 'Angela', 'Merkel', 'merkel@gmx.de','view-profile,manage-account,manage-account-links');
+INSERT INTO user (id, username, password, firstname, lastname, email, roles) VALUES (5, 'delafer', 'start123', 'Juri', 'Gagarin', 'gagarin@gmx.de', 'view-profile,manage-account,manage-account-links');
 
 
 
