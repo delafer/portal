@@ -1,5 +1,6 @@
 package de.creditreform.app.model;
 
+@Deprecated
 public class GameTmp {
     public String getName() {
         return name;

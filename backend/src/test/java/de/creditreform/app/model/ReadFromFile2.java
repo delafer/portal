@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
+
+@Deprecated
 public class ReadFromFile2 {
 
     public static String es(String s) {
