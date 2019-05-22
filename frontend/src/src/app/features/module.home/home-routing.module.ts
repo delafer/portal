@@ -8,6 +8,8 @@ import {OverviewComponent} from './dashboard/overview/overview.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {EditListComponent} from './edit-list/edit-list.component';
 import {EntryEditComponent} from './edit-list/entry-edit/entry-edit.component';
+import {AuthGuard} from '$core/guards';
+import {Constants} from '$common/constants/Constants';
 
 const routes: Routes = [
   {
@@ -19,7 +21,11 @@ const routes: Routes = [
           {path: 'execute/:id', component: ExecuteComponent}
         ]
       },
-      {path: 'editor', component: EditListComponent},
+      {
+        path: 'editor', component: EditListComponent,
+        canActivate: [AuthGuard],
+        data: {role: Constants.adminRole}
+      },
       {path: 'editor/:id', component: EntryEditComponent},
       {path: 'settings', component: SettingsComponent},
       {path: 'about', component: AboutComponent}
@@ -32,4 +38,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {
+}

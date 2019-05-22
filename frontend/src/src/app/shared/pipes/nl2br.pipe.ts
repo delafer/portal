@@ -10,10 +10,9 @@ export class Nl2brPipe implements PipeTransform {
     if (value !== void 0) {
 
       if (Array.isArray(value))  {
-        console.log("aaaaaaa!",value);
         let res = '';
         for (let next of value) {
-          if (res.length!==0) res += '\r\n';
+          if (res != '') res += '\r\n';
           res += next;
         }
         return res;

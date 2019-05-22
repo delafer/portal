@@ -1,9 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {AppService} from '@app/core/services/app.service';
-import {GameService} from '../../../../core/services/games.service';
-import {Game} from '../../../../common/models';
+import {GameService} from '$core/services/games.service';
+import {Game} from '$common/models';
 import {Observable, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, merge, pluck, share, startWith, switchMap, tap} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, merge, pluck, share, startWith, switchMap} from 'rxjs/operators';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 
 @Component({
@@ -24,7 +23,8 @@ export class OverviewComponent implements OnInit, AfterViewInit {
 
   @LocalStorage('ocpage')
   page$: number;
-  set page(value : number) {
+
+  set page(value: number) {
     this.page$ = value;
     this.goToPage(this.page$);
   }
@@ -35,8 +35,8 @@ export class OverviewComponent implements OnInit, AfterViewInit {
 
   private pageStream = new Subject<number>();
 
-  constructor(protected movieService: GameService, private localSt:LocalStorageService) { }
-
+  constructor(protected movieService: GameService, private localSt: LocalStorageService) {
+  }
 
 
   ngOnInit() {
@@ -49,22 +49,22 @@ export class OverviewComponent implements OnInit, AfterViewInit {
       distinctUntilChanged(),
       map(searchTerm => {
         this.terms = searchTerm;
-        return {search: searchTerm, page: 1}
+        return {search: searchTerm, page: 1};
       }));
 
     const pageSource = this.pageStream.pipe(map(pageNumber => {
       this.page$ = pageNumber;
-      return {search: this.terms, page: pageNumber}
+      return {search: this.terms, page: pageNumber};
     }));
 
-    const source = pageSource.pipe (
+    const source = pageSource.pipe(
       merge(searchSource),
       startWith({search: this.terms, page: this.page}),
-      switchMap((params: {search: string, page: number}) => {
-        return this.movieService.list(params.search, params.page)
+      switchMap((params: { search: string, page: number }) => {
+        return this.movieService.list(params.search, params.page);
       }),
       share()
-      );
+    );
 
     this.total$ = source.pipe(pluck('total'));
     this.items$ = source.pipe(pluck('items'));
@@ -74,12 +74,12 @@ export class OverviewComponent implements OnInit, AfterViewInit {
   }
 
   search(terms: string) {
-    this.searchTermStream.next(terms)
+    this.searchTermStream.next(terms);
   }
 
   goToPage(topage: number) {
     console.log(`called for page ${topage}`);
-    this.pageStream.next(topage)
+    this.pageStream.next(topage);
   }
 
   ngAfterViewInit(): void {

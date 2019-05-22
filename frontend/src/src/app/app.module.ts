@@ -3,10 +3,10 @@ import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './features/root/app.component';
+import {AppComponent} from '$features/root/app.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {ErrorInterceptor, JwtInterceptor} from '@app/core/interceptors';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ErrorInterceptor, JwtInterceptor} from '$app/core/interceptors';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 
 @NgModule({

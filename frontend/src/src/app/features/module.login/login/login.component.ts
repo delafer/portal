@@ -1,9 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import {Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {first} from 'rxjs/operators';
+import {AuthenticationService, UserContextContextService} from '$app/core/services';
+import {MessageboxComponent} from '$shared/components/messagebox/messagebox.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NamingService} from '$service/naming.service';
 
-import { AuthenticationService } from '@app/core/services';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,8 +25,12 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
-  ) { }
+    private authenticationService: AuthenticationService,
+    private modalService: NgbModal,
+    private namingService: NamingService,
+    private ctx: UserContextContextService
+  ) {
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -39,7 +46,9 @@ export class LoginComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   forget($event): void {
     $event.preventDefault();
@@ -47,11 +56,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log("Entering home area!");
+    console.log('Entering home area!');
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
-      console.log("Invalid form");
+      console.log('Invalid form');
       return;
 
     }
@@ -64,6 +73,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(`next step redirect to home page: ${this.returnUrl}`);
+          this.openMessageBox();
           this.router.navigate([this.returnUrl]);
         },
         error => {
@@ -71,5 +81,27 @@ export class LoginComponent implements OnInit {
           this.error = error;
           this.loading = false;
         });
+  }
+
+  private openMessageBox() {
+    const modalRef = this.modalService.open(MessageboxComponent, { windowClass: 'dark-modal', centered: true});
+    this.namingService.getUserIP(function(name){
+      modalRef.componentInstance.name = name;
+    });
+    this.ctx.getByName(this.loginForm.value.username).subscribe(
+      (result) => {
+        modalRef.componentInstance.text = result.text;
+      }
+    )
+  }
+
+  onKeyPress($event: KeyboardEvent) {
+    //console.log(JSON.stringify($event))
+    if ($event.key && $event.key == "Enter") {
+      this.onSubmit();
+    }
+    // if(event == 13) {
+    //   this.onSubmit();
+    // }
   }
 }

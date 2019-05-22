@@ -3,3 +3,24 @@
 }
 
 
+.form-control:disabled, .form-control[readonly] {
+  background-color: #eff2f5 !important;
+}
+
+.form-control {
+  color: black;
+}
+
+.card-header {
+  padding: 0px !important;
+}
+
+.btn-link:focus, .btn-link.focus {
+  text-decoration: none !important;
+}
+
+.btn-link:hover{
+  text-decoration: none !important;
+}
+
+

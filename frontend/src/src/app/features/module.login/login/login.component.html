@@ -14,7 +14,7 @@
           <hr>
           <hr class="short">
         </div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #documentEditForm="ngForm" (keydown)="onKeyPress($event)">
           <div class="form-group col-3">
             <input class="effect-2" type="text" placeholder="Login..." formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
             <span class="focus-border"></span>
@@ -46,4 +46,5 @@
     </div>
   </div>
 </div>
+
 </div>

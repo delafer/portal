@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-tile',
@@ -7,16 +7,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TileComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   @Input() titel: any;
+
   ngOnInit() {
   }
 
   static ONE_YEAR: number = 60 * 60 * 1000 * 24 * 365; //about one year, not a leap-year
   actualDate: number = Date.now();
 
-  isNew(create_date: string) : boolean {
-    return this.actualDate - Date.parse(create_date ) < TileComponent.ONE_YEAR;
+  isNew(create_date: string): boolean {
+    return this.actualDate - Date.parse(create_date) < TileComponent.ONE_YEAR;
   }
 }

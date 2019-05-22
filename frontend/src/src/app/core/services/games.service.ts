@@ -1,44 +1,52 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {Observable, Subject, of, range} from 'rxjs';
-import {catchError, delay, filter, map, tap} from 'rxjs/operators';
-import {Game} from '@common/models';
-import {environment} from '../../../environments/environment';
-import {ListResult} from '../../common/api';
+import {Observable, of} from 'rxjs';
+import {catchError, delay, map, tap} from 'rxjs/operators';
+import {Game} from '$common/models';
+import {environment} from '$environment/environment';
+import {ListResult} from '$common/api';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class GameService {
   //https://www.htmlgames.com/html5-games-for-your-site/
   //'https://www.htmlgames.com/rss/games.php?json';  // URL to web api
   private gamesUrl = `${environment.serverUrl}/api/games`;  // URL to web api
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient) {
+  }
 
   list(search: string = null, page: number = 1, limit: number = 8): Observable<ListResult<Game>> {
 
     let elements: Observable<Game[]> = this.getGames();
     let count = 0;
-    if (search) search = search.replace(/^\s+|\s+$/g,'').toLowerCase();
+    if (search) {
+      search = search.replace(/^\s+|\s+$/g, '').toLowerCase();
+    }
     return elements.pipe(
-      map((games : Game[]) => games.filter(p => ((search) ? p.name.toLowerCase().indexOf(search) >= 0 || p.description.toLowerCase().indexOf(search) >= 0 : true))),
-      tap(games => {count = games.length; console.log(`Before: ${games.length}, search: ${search}`)}),
-      map ((games: Game[]) => games.slice((page - 1) * limit, page * limit)),
+      map((games: Game[]) => games.filter(p => ((search) ? p.name.toLowerCase().indexOf(search) >= 0 || p.description.toLowerCase().indexOf(search) >= 0 : true))),
+      tap(games => {
+        count = games.length;
+        console.log(`Before: ${games.length}, search: ${search}`);
+      }),
+      map((games: Game[]) => games.slice((page - 1) * limit, page * limit)),
       delay(300),
-      tap(games => {console.log(`After: ${games.length}`)}),
-      map((games: Game[]) => ({items : games, total: count}))
+      tap(games => {
+        console.log(`After: ${games.length}`);
+      }),
+      map((games: Game[]) => ({items: games, total: count}))
     );
 
   }
 
   /** GET games from the server */
-  getGames (): Observable<Game[]> {
+  getGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.gamesUrl)
       .pipe(
         tap(_ => this.log('fetched games')),
@@ -86,7 +94,7 @@ export class GameService {
   //////// Save methods //////////
 
   /** POST: add a new game to the server */
-  addGame (game: Game): Observable<Game> {
+  addGame(game: Game): Observable<Game> {
     return this.http.post<Game>(this.gamesUrl, game, httpOptions).pipe(
       tap((game: Game) => this.log(`added game w/ id=${game.id}`)),
       catchError(this.handleError<Game>('addGame'))
@@ -94,7 +102,7 @@ export class GameService {
   }
 
   /** DELETE: delete the game from the server */
-  deleteGame (game: Game | number): Observable<Game> {
+  deleteGame(game: Game | number): Observable<Game> {
     const id = typeof game === 'number' ? game : game.id;
     const url = `${this.gamesUrl}/${id}`;
 
@@ -105,7 +113,7 @@ export class GameService {
   }
 
   /** PUT: update the game on the server */
-  updateGame (game: Game): Observable<any> {
+  updateGame(game: Game): Observable<any> {
     return this.http.put(this.gamesUrl, game, httpOptions).pipe(
       tap(_ => this.log(`updated game id=${game.id}`)),
       catchError(this.handleError<any>('updateGame'))
@@ -118,7 +126,7 @@ export class GameService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
@@ -133,5 +141,6 @@ export class GameService {
   }
 
   /** Log a GameService message with the MessageService */
-  private log(message: string) {}
+  private log(message: string) {
+  }
 }

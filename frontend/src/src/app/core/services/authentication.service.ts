@@ -1,9 +1,9 @@
-﻿import { Injectable } from '@angular/core';
+﻿import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '@environment/environment';
-import { map } from 'rxjs/operators';
-import { User } from '@common/models';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {User} from '$common/models';
+import {environment} from '$environment/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -31,7 +31,7 @@ export class AuthenticationService {
         }
       });
       /*this.http.post<any>(`${environment.serverUrl}/api/users/authenticate`, { username, password })*/
-      return this.http.post<any>(`${environment.serverUrl}/api/users/jwt`,  params )
+      return this.http.post<any>(`${environment.authUrl}`,  params )
             .pipe(map(user => {
                 console.log('Login successful');
                 // login successful if there's a jwt token in the response

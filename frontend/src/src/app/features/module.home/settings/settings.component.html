@@ -4,7 +4,11 @@
   <div class="container">
     <div class="row d-flex flex-row">
       <div class="d-flex justify-content-center col-12">
-    <form (ngSubmit)="submitForm()" [formGroup]="profileForm" class="col-9">
+    <form (ngSubmit)="submitForm()" [formGroup]="profileForm" #documentEditForm="ngForm" class="col-9">
+      <div class="form-group">
+      <label for="welcomeTxt">Welcome text</label>
+      <textarea class="form-control" id="welcomeTxt" rows="4" formControlName="text"></textarea>
+      </div>
       <div class="form-row">
         <div class="form-group col-6">
           <label for="inputLogin">Login</label>
@@ -53,11 +57,19 @@
         <label for="exampleFormControlTextarea1">User roles</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="roles" [value]="profileForm.value.roles | nl2br" readonly></textarea>
       </div>
-      <div class="form-group">
-        <label for="jwtToken">JWT Token</label>
-        <textarea class="form-control small" id="jwtToken" rows="12" formControlName="token" readonly></textarea>
-      </div>
-      <button class="btn btn-primary btn3d" type="submit">Submit</button>
+      <ngb-accordion #acc="ngbAccordion">
+        <ngb-panel id="toggle-1" title="User token">
+          <ng-template ngbPanelContent>
+            <textarea class="form-control small" id="jwtToken" rows="12" formControlName="token" readonly></textarea>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+
+      <!--<div class="form-group">-->
+        <!--<label for="jwtToken">JWT Token</label>-->
+        <!--<textarea class="form-control small" id="jwtToken" rows="12" formControlName="token" readonly></textarea>-->
+      <!--</div>-->
+      <button class="btn btn-primary btn3d my-4" type="submit" [disabled]="profileForm.invalid || !dirty" (click)="documentEditForm.ngSubmit.emit()" >Submit</button>
     </form>
   </div>
 </div>

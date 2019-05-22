@@ -3,7 +3,7 @@
   <div class="card-body p-2">
     <a routerLink="../execute/{{titel.id}}" class="alink">
       <div class="d-flex justify-content-end">
-        <ngb-rating [(rate)]="titel.rating" [readonly]="true" [starTemplate]="t" max="5"></ngb-rating>
+        <ngb-rating [(rate)]="titel.rating" [readonly]="true" max="5"></ngb-rating>
       </div>
       <img [src]="titel.thumb" alt="..." class="card-img-top" onError="this.src='assets/no-image.jpg'">
       <h5 class="card-title">{{titel.name }}</h5>

@@ -14,28 +14,26 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@pipes/*": ["app/shared/pipes/*"],
-      "@directives/*": ["app/shared/directives/*"],
-      "@validators/*": ["app/shared/validators/*"],
-      "@models/*": ["/app/common/models/*"],
-      "@api/*": ["/app/common/api/*"],
-      "@service/*": ["/app/core/services/*"],
-      "@guards/*": ["/app/core/guards/*"],
-      "@mocks/*": ["/app/core/mocks/*"],
-      "@features/*": ["app/features/*"],
-      "@home/*": ["app/features/module.home/*"],
-      "@login/*": ["app/features/module.login/*"],
-      "@shared/*": ["app/shared/*"],
-      "@common/*": ["app/common/*"],
-      "@appcore/*": ["app/core/*"],
-      "@environment/*": ["environments/*"],
-      "@app/*": ["app/*"],
-      "@env/*": ["environments/*"
-      ],
-      "@testing/*": [
-        "testing/*"
+      "$pipes/*": ["src/app/shared/pipes/*"],
+      "$directives/*": ["src/app/shared/directives/*"],
+      "$validators/*": ["src/app/shared/validators/*"],
+      "$models/*": ["src/app/common/models/*"],
+      "$api/*": ["src/app/common/api/*"],
+      "$service/*": ["src/app/core/services/*"],
+      "$guards/*": ["src/app/core/guards/*"],
+      "$mocks/*": ["src/app/core/mocks/*"],
+      "$features/*": ["src/app/features/*"],
+      "$home/*": ["src/app/features/module.home/*"],
+      "$login/*": ["src/app/features/module.login/*"],
+      "$shared/*": ["src/app/shared/*"],
+      "$common/*": ["src/app/common/*"],
+      "$core/*": ["src/app/core/*"],
+      "$environment/*": ["src/environments/*"],
+      "$app/*": ["src/app/*"],
+      "$testing/*": [
+        "src/testing/*"
       ]
     },
     "lib": [

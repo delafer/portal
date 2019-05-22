@@ -1,6 +1,6 @@
-import {Component, ViewEncapsulation, OnInit, Input} from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {Game} from '@common/models';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Game} from '$common/models';
 
 @Component({
   selector: 'app-youtube',

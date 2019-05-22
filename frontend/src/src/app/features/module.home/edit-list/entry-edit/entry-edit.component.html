@@ -1,12 +1,89 @@
 <div *ngIf="game">
-  <h2>{{game.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{game.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="game.name" placeholder="name"/>
-    </label>
+  <h2>Edit: '{{gameForm?.value.name | uppercase}}'</h2>
+  <!--<div><span>id: </span>{{game.id}}</div>-->
+
+
+  <div class="container">
+    <div class="row d-flex flex-row">
+      <div class="d-flex justify-content-left col-12">
+
+        <form class="col-6" (ngSubmit)="submitForm()" [formGroup]="gameForm">
+          <div class="form-group">
+            <label for="gameName">Name</label>
+            <input type="text" class="form-control" id="gameName" placeholder="Type game name here" formControlName="name" required>
+          </div>
+          <div class="form-group">
+            <label for="gameName">Category</label>
+          <input class="form-control" placeholder="Select game category" list="categories" formControlName="category" required>
+          <datalist id="categories">
+            <option value="Mahjong"></option>
+            <option value="Solitaire"></option>
+            <option value="Mind games"></option>
+            <option value="Hidden objects"></option>
+            <option value="Match 3 games"></option>
+            <option value="Skill games"></option>
+            <option value="Classic games"></option>
+          </datalist>
+          </div>
+          <div class="form-group">
+            <label for="gameName">Creation date</label>
+            <div class="input-group">
+
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" formControlName="created" ngbDatepicker #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" placeholder="Type description here..." rows="3" formControlName="desc" required></textarea>
+          </div>
+          <div class="form-group">
+          <div class="form-row">
+
+            <div class="col">
+              <label>Width</label>
+              <input type="text" class="form-control" placeholder="width (pixels)" formControlName="width">
+            </div>
+            <div class="col">
+              <label>Height</label>
+              <input type="text" class="form-control" placeholder="height (pixels)" formControlName="height">
+            </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="homeLink">Home url</label>
+            <input type="text" class="form-control" id="homeLink" placeholder="home address" formControlName="home">
+          </div>
+          <div class="form-group">
+            <label for="iframeLink">Embedded url</label>
+            <input type="text" class="form-control" id="iframeLink" placeholder="iframe url" formControlName="iframe">
+          </div>
+          <div class="form-group">
+            <label for="youtube">Youtube link</label>
+            <input type="text" class="form-control" id="youtube" placeholder="Youtube url" formControlName="youtube">
+          </div>
+          <div class="form-group">
+            <label for="image">Preview image</label>
+            <input type="text" class="form-control" id="image" placeholder="Game thumbnail" formControlName="thumb" required>
+          </div>
+        </form>
+
+      </div>
+    </div>
   </div>
+
+
+  <!--<div>-->
+    <!--<label>name:-->
+      <!--<input [(ngModel)]="game.name" placeholder="name"/>-->
+    <!--</label>-->
+  <!--</div>-->
+<div class="mt-3">
   <button class="btn btn-secondary mr-2" (click)="goBack()">go back</button>
-  <button class="btn btn-danger mx-2" (click)="save()">save</button>
+  <button class="btn btn-danger mx-2" [disabled]="gameForm.invalid" (click)="save()">save</button>
   <button class="btn btn-success ml-2" (click)="play()">play</button>
+</div>
 </div>

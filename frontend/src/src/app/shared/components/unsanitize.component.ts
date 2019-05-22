@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {SafePipe} from '@shared/pipes';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-unsanitize',

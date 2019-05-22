@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --port 4201",
     "build": "ng build",
+    "build-ibm-cloud": "ng build --configuration=ibm-cloud",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

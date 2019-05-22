@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {GameService} from '@appcore/services/games.service';
-import {Game} from '@common/models';
+import {Component, OnInit} from '@angular/core';
+import {GameService} from '$core/services/games.service';
+import {Game} from '$common/models';
 
 
 @Component({
@@ -12,7 +12,8 @@ export class EditListComponent implements OnInit {
 
   games: Game[];
 
-  constructor(private heroService: GameService) { }
+  constructor(private heroService: GameService) {
+  }
 
   ngOnInit() {
     this.getGames();
@@ -25,8 +26,10 @@ export class EditListComponent implements OnInit {
 
   add(name: string = 'new name'): void {
     name = name.trim();
-    if (!name) { return; }
-    this.heroService.addGame({ name } as Game)
+    if (!name) {
+      return;
+    }
+    this.heroService.addGame({name} as Game)
       .subscribe(game => {
         this.games.push(game);
       });

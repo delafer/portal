@@ -46,14 +46,15 @@
                 <configuration> 
                     <!--<nodeVersion>v10.14.2</nodeVersion>-->
                     <nodeVersion>v11.5.0</nodeVersion> 
+
                     <!--<npmVersion>6.5.0</npmVersion>-->
                     <npmVersion>6.6.0-next.0</npmVersion> 
                     <workingDirectory>./src/</workingDirectory> 
 
-<!-- Optional: where to download node from. Defaults to https://nodejs.org/dist/ -->
+                    <!-- Optional: where to download node from. Defaults to https://nodejs.org/dist/ -->
                     <nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot> 
 
-<!-- Optional: where to download npm from. Defaults to https://registry.npmjs.org/npm/-/ -->
+                    <!-- Optional: where to download npm from. Defaults to https://registry.npmjs.org/npm/-/ -->
                     <npmDownloadRoot>https://registry.npmjs.org/npm/</npmDownloadRoot> 
                 </configuration> 
                 <executions> 
@@ -78,10 +79,10 @@
                             <goal>npm</goal> 
                         </goals> 
                         <configuration> 
-                            <arguments>run build</arguments> 
+                            <arguments>${angulur.build.script}</arguments> 
                         </configuration> 
                     </execution> 
-                    <execution> 
+                    <!--<execution> 
                         <id>prod</id> 
                         <goals> 
                             <goal>npm</goal> 
@@ -90,7 +91,7 @@
                             <arguments>run-script build</arguments> 
                         </configuration> 
                         <phase>generate-resources</phase> 
-                    </execution> 
+                    </execution> -->
                 </executions> 
             </plugin> 
             <plugin> 
@@ -107,4 +108,21 @@
             </plugin> 
         </plugins> 
     </build> 
+    <profiles> 
+        <profile> 
+            <id>build-ibm-cloud</id> 
+            <properties> 
+                <angulur.build.script>run build-ibm-cloud</angulur.build.script> 
+            </properties> 
+        </profile> 
+        <profile> 
+            <id>build-default</id> 
+            <activation> 
+                <activeByDefault>true</activeByDefault> 
+            </activation> 
+            <properties> 
+                <angulur.build.script>run build</angulur.build.script> 
+            </properties> 
+        </profile> 
+    </profiles> 
 </project> 

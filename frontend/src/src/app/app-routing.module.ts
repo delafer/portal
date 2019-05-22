@@ -1,8 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {DashboardComponent} from '@home/dashboard/dashboard.component';
-import {SettingsComponent} from '@home/settings/settings.component';
-import {AuthGuard} from '@appcore/guards';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AuthGuard} from '$core/guards';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

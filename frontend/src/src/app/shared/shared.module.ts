@@ -12,10 +12,8 @@ import { HoverDirective } from './directives/hover.directive';
     CommonModule
   ],
   declarations: [
-    LoaderComponent, Nl2brPipe, LoadScriptDirective, HoverDirective
   ],
   exports: [
-    LoaderComponent, Nl2brPipe
   ]
 })
 export class SharedModule { }

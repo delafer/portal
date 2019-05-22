@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Game} from '@common/models';
+import {Game} from '$common/models';
 import {ActivatedRoute} from '@angular/router';
-import {GameService} from '@appcore/services/games.service';
-import { Location } from '@angular/common';
+import {GameService} from '$core/services/games.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-execute',
@@ -17,7 +17,8 @@ export class ExecuteComponent implements OnInit {
     private route: ActivatedRoute,
     private gameService: GameService,
     private location: Location
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getHero();
