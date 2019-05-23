@@ -3,7 +3,7 @@
 
 	<server-connection type="rest">
 		<server-connection-config>
-			<url>http://rhssekdcicd036.ecofis.de:8085/</url>
+			<url>http://xyz036.javasoft.org:8085/</url>
 	    	<client-application-identification-header-name>X-Appsensor-Client-Application-Name2</client-application-identification-header-name>
 			<client-application-identification-header-value>myclientapp</client-application-identification-header-value>
 		</server-connection-config>
